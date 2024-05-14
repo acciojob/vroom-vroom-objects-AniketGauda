@@ -1,23 +1,23 @@
 // Complete the js code
 function Car(make, model) {
-	constructor(make,model){
-        this.make = make;
+	    this.make = make;
         this.model = model;
-    }
-    getMakeModel(){
-        return `${this.make} ${this.model}`;
-    }
+}
+
+Car.prototype.getMakeModel = ()=>{
+	return `${this.make} ${this.model}`
 }
 
 function SportsCar(make, model, topSpeed) {
-	constructor(make,model,topSpeed){
-        super(make,model);
-        this.topSpeed = topSpeed;
-    }
+	Car.call(this,make,model);
+	this.topSpeed = topSpeed;
+}
 
-    getTopSpeed(){
-        return this.topSpeed;
-    }
+SportsCar.prototype = Object.create(Car.prototype);
+SportsCar.prototype.constructor = SportsCar;
+
+SportsCar.prototype.getTopSpeed = ()=>{
+	return this.topSpeed;
 }
 
 // Do not change the code below
